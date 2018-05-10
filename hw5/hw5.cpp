@@ -27,7 +27,7 @@ void DFS_PreOrder_traversal_recursive(const Node *entry) {
   DFS_PreOrder_traversal_recursive(entry->right);
 }
 
-Node *generateBinaryTree() {
+Node *BinaryTree() {
 	Node *root = new Node(2);
 
 	root->right = new Node(5, nullptr, new Node(9,  new Node(4), nullptr));
@@ -37,8 +37,8 @@ Node *generateBinaryTree() {
 }
 
 int main() {
-  Node *root = generateBinaryTree();
-  cout << "These are the steps in my tree: ";
+  Node *root = BinaryTree();
+
   DFS_PreOrder_traversal_recursive(root);
   cout << endl;
 }
