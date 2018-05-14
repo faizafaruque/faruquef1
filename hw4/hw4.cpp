@@ -1,56 +1,135 @@
 #include <iostream>
 
-using namespace std;
+#include <fstream>
 
-int binarySearch(int array[], int size, int searchValue)
+#include <algorithm>
+
+#include <vector>
+
+int binarySearch (std::vector <int> V, int & value, int & left, int & right);
+
+int main ()
+
 {
-	int x= 0;
-	int a= size - 1;
 
-	int b;
+  using namespace std;
 
-	while(x<=a)
-	{
-
-		b = (x+a)/2;
+  vector <int> myvector;
 
 
-		if(searchValue==array[b])
-		{
-			return b;
-		}
-		else if(searchValue>array[b])
-		{
-		x=b+1;
-		}
-		else
-		{
-			a=b-1;
-		}
-	}
-	return -1;
+
+  ifstream a;
+
+  int x;
+
+  int t;
+
+  int y;
+
+  int z;
+
+
+
+  a.open ("hw4.txt");
+
+  //opens stream
+
+  while (a>>x)
+
+  {
+
+    myvector.push_back(x);
+
+
+
+  }
+
+
+
+  a.close();
+
+
+
+
+
+  sort (myvector.begin(), myvector.end());
+
+  //already sorted
+
+  for (int i=0 ; i< myvector.size(); i++)
+
+  {
+
+  cout<< myvector[i] << endl;
+
+
+  }
+
+
+
+  cin>> t;
+
+  y = 0;
+
+  z = myvector.size() - 1;
+
+
+
+  int n = binarySearch(myvector, t, y, z);
+
+
+
+
+  if  (n < 0)
+
+  cout << "NOT FOUND" <<endl;
+
+
+
+  if (n > 0)
+
+  cout << n << endl;
+
+
+
+  return 0;
+
 }
 
-int main()
-{
-	int a[]= {4, 9, 16, 25, 36, 49, 64, 81};
 
-	int userValue;
 
-	cout << "Enter an integer:" <<endl;
-	cin>> userValue;
+int binarySearch (std::vector <int> V, int & value, int & left, int & right){
 
-	int result = binarySearch(a, 8, userValue);
+using namespace std;
 
-	if(result>=0)
-	{
-		cout<< a[result] << "is at"
-		" element with index " << result << endl;
-	}
+  while (left<= right){
 
-	else
-	{
-		cout<< userValue << " was not found. " <<endl;
+    int middle = (left+right)/2;
 
-	}
+    if (V[middle] == value)
+
+    return middle;
+
+    else if (V[middle] > value)
+
+    right = middle - 1;
+
+      else left = middle + 1;
+
+
+
+cout << "Left =" << left << endl;
+
+cout << "Right =" << right << endl;
+
+cout << "Middle = " << middle << endl;
+
+
+
+
+
+  }
+
+  return -1;
+
 }
