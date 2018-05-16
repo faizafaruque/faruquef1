@@ -10,7 +10,12 @@ int main(int argc, const char** argv)
 	doc-> LoadFile(argv[1]);
 	XMLElement*root=doc->FirstChildElement();
 	cout<<root->FirstChildElement()->Name()<<"\n";
-	cout<<root->FirstChildElement()->GetText()<<"\n";
+
+
+
+  XMLElement*root_s=root->FirstChildElement()->NextSiblingElement();
+	cout<<root_s->Name()<<"\n";
+
 
 	return 0;
 
