@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "tinyxml.h"
 
 using namespace std;
 
